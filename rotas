@@ -1,0 +1,23 @@
+https://resttesttest.com
+
+Buscar =
+
+http://localhost:3000/api/cliente
+http://localhost:3000/api/fornecedor
+http://localhost:3000/api/funcionario
+http://localhost:3000/api/produto
+http://localhost:3000/api/estoque
+http://localhost:3000/api/pedido
+
+Cadastrar = 
+
+http://localhost:3000/api/cliente/cadastrar
+http://localhost:3000/api/fornecedor/cadastrar
+http://localhost:3000/api/funcionario/cadastrar
+http://localhost:3000/api/produto/cadastrar
+http://localhost:3000/api/pedido/lancar
+
+Mudar = 
+
+http://localhost:3000/api/pedido/fechar/:id
+http://localhost:3000/api/estoque/controle/:id
