@@ -1,0 +1,74 @@
+create database dbapi;
+
+use dbapi;
+
+CREATE TABLE estoque (
+id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ingrediente varchar(255) NOT NULL,
+quantidade int NOT NULL
+);
+
+CREATE TABLE produto (
+id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome varchar(255) NOT NULL,
+preco int NOT NULL,
+ingredientes TEXT NOT NULL,
+descricao TEXT
+);
+
+CREATE TABLE fornecedor (
+id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome varchar(255) NOT NULL,
+senha varchar(20) NOT NULL,
+email varchar(255) NOT NULL,
+fornece int NOT NULL,
+FOREIGN KEY (fornece) REFERENCES estoque(id)
+);
+
+CREATE TABLE cliente (
+id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome varchar(255) NOT NULL,
+senha varchar(20) NOT NULL,
+email varchar(255) NOT NULL,
+endereco varchar(255) NOT NULL
+);
+
+CREATE TABLE funcionario (
+id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome varchar(255) NOT NULL,
+senha varchar(20) NOT NULL,
+email varchar(255) NOT NULL,
+cargo TEXT NOT NULL
+);
+
+CREATE TABLE pedido (
+id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+id_cliente int NOT NULL,
+pedido_item int NOT NULL,
+concluido varchar(255) NOT NULL,
+FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+FOREIGN KEY (pedido_item) REFERENCES produto(id)
+);
+
+
+
+insert into estoque (ingrediente, quantidade) values ('Farinha', 8);
+insert into estoque (ingrediente, quantidade) values ('Carne', 6);
+insert into estoque (ingrediente, quantidade) values ('Queijo', 12);
+
+insert into produto (nome, preco, ingredientes, descricao) values ('Lasanha',12,'Carne*2,  Farinha*2, Queijo*2', 'Lasanha de carne');
+insert into produto (nome, preco, ingredientes, descricao) values ('Espaget',8,'Carne*1,  Farinha*1, Queijo*1', 'Espaget de carne');
+
+insert into fornecedor (nome, senha, email, fornece) values ('Pedro', 123, 'pedro@bol.com', 1);
+insert into fornecedor (nome, senha, email, fornece) values ('Maria', 1234, 'maria@bol.com', 2);
+insert into fornecedor (nome, senha, email, fornece) values ('Jao', 12345, 'jao@bol.com', 3);
+
+insert into cliente (nome, senha, email, endereco) values ('Carlos', 123456, 'carlos@bol.com', 'rua lugar');
+insert into cliente (nome, senha, email, endereco) values ('Eduardo', 1234567, 'edu@bol.com', 'rua onde');
+
+insert into funcionario (nome, senha, email, cargo) values ('Marcelo', 12345678, 'marcelo@bol.com', 'garcon');
+insert into funcionario (nome, senha, email, cargo) values ('Henrique', 123456789, 'marcelo@bol.com', 'gerente');
+
+insert into pedido (id_cliente, pedido_item, concluido) values (1, 1, 'concluido');
+insert into pedido (id_cliente, pedido_item, concluido) values (1, 2, 'aberto');
+
