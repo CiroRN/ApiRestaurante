@@ -21,3 +21,10 @@ Mudar =
 
 http://localhost:3000/api/pedido/fechar/:id
 http://localhost:3000/api/estoque/controle/:id
+
+Token=
+
+http://localhost:3000/api/token/login
+http://localhost:3000/api/token/verificar
+
+Authorization Bearer <token>
