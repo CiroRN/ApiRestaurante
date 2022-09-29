@@ -21,3 +21,14 @@ Mudar =
 
 http://localhost:3000/api/pedido/fechar/:id
 http://localhost:3000/api/estoque/controle/:id
+
+Token=
+
+http://localhost:3000/api/token/login
+nome = Carlos
+senha = 123456
+
+http://localhost:3000/api/token/verificar
+Authorization Bearer <token>
+
+
