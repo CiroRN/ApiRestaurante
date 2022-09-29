@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const Service = require('../services/Service');
 
 module.exports = {
@@ -268,4 +269,34 @@ module.exports = {
         
         res.json(json);
     } */
+
+    login: async(req, res) => {
+        
+        //verififcar usuario ??
+        const user = {
+            id: 1,
+            username: 'richard',
+            email: 'dick@bol.com'
+        }
+
+        jwt.sign({user: user}, 'segredo', { expiresIn: '600s' }, (err, token) => {
+            res.json({
+                token: token
+            });
+        });
+    },
+
+    verificar: async(req, res) => {
+        jwt.verify(req.token, 'segredo', (err, authData) => {
+            if(err) {
+                res.sendStatus(403);
+            } else {
+                res.json({
+                    message: 'Tudo supinpa :D',
+                    authData
+                })
+            }
+        });
+    },
+    
 }
