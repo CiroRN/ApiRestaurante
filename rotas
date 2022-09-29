@@ -25,6 +25,10 @@ http://localhost:3000/api/estoque/controle/:id
 Token=
 
 http://localhost:3000/api/token/login
-http://localhost:3000/api/token/verificar
+nome = Carlos
+senha = 123456
 
+http://localhost:3000/api/token/verificar
 Authorization Bearer <token>
+
+
