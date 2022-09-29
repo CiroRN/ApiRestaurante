@@ -271,19 +271,27 @@ module.exports = {
     } */
 
     login: async(req, res) => {
-        
+
+        let nome = req.body.nome;
+        let senha = req.body.senha;
+        let user = await Service.buscarUm(nome, senha);
+
         //verififcar usuario ??
-        const user = {
+/*         const user = {
             id: 1,
             username: 'richard',
-            email: 'dick@bol.com'
-        }
-
-        jwt.sign({user: user}, 'segredo', { expiresIn: '600s' }, (err, token) => {
-            res.json({
-                token: token
+            email: 'dick@bol.com' 
+        } */
+        if(user) {
+            jwt.sign({user: user}, 'segredo', { expiresIn: '600s' }, (err, token) => {
+                res.json({
+                    token: token
+                });
             });
-        });
+        } else {res.json({
+                message: 'Nome ou senha invalidos'
+            });
+        };
     },
 
     verificar: async(req, res) => {

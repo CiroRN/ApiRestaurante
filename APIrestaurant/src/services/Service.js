@@ -55,10 +55,10 @@ module.exports = {
         });
     },
     
-/*     buscarUm: (id) => {
+     buscarUm: (nome, senha) => {
         return new Promise((aceito,rejeitado)=>{
 
-            db.query('SELECT * FROM test WHERE id = ?', [id], (error, results)=>{
+            db.query('SELECT * FROM cliente WHERE nome = ? && senha = ?', [nome, senha], (error, results)=>{
                 if(error) { rejeitado(error); return; }
                 if(results.length > 0){
                     aceito(results[0]);
@@ -67,7 +67,7 @@ module.exports = {
                 }
             });
         });
-    }, */
+    }, 
 
      inserirCliente: (nome, senha, email, endereco) => {
         return new Promise((aceito,rejeitado)=>{
